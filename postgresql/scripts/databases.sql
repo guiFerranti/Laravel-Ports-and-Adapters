@@ -1,0 +1,3 @@
+CREATE DATABASE laravel_api;
+
+GRANT ALL PRIVILEGES ON DATABASE laravel_api TO root;
