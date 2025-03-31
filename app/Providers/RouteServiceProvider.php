@@ -30,12 +30,24 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->routes(function () {
-            Route::middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+            Route::namespace($this->namespace)
+                ->middleware('api')
+                ->group(function () {
+                    // rotas publicas
+                    Route::namespace('Openeds')
+                        ->group(base_path('routes/openeds.php'));
 
-            //Route::middleware('web')
-            //    ->group(base_path('routes/web.php'));
+                    // rotas privadas
+                    Route::namespace('Closeds')->group(function () {
+                        Route::namespace('backoffice')
+                            ->prefix('backoffice')
+                            ->group(base_path('routes/closeds/backoffice/users.php'));
+
+                        Route::namespace('erp')
+                            ->prefix('erp')
+                            ->group(base_path('routes/closeds/erp/financial.php'));
+                    });
+            });
         });
     }
 }
