@@ -1,7 +1,5 @@
-<?php
+<?php /** @noinspection PhpUndefinedClassInspection */
 
-use App\Http\Controllers\HelloWorldController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
